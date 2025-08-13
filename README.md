@@ -1,6 +1,17 @@
+<div align="center">
+  
 # XKSW-CTF
 
-## Structure
+<br>
+<img src="docs/image.png" alt="XKSW-CTF" width="600"/>
+<br>
+<br>
+
+---
+
+</div>
+
+## Challenge Structure
 
 ```
 ├── FORENSIC
