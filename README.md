@@ -27,8 +27,6 @@
 | :-: | :-: | :-: |
 | 김민욱 | - | WEB |
 
-### Challenge Folder Structure
-
 ```
 ├── FORENSIC
 │   ├── Real_Love
