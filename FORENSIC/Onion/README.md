@@ -1,0 +1,16 @@
+* Title: Onion
+* Auhor: Whois 조하은
+* Description:
+```
+국내 한 기업의 연구원이 사내 정보 유출 의심 행위를 했다는 제보가 접수되었다.
+
+내부 조사팀은 해당 직원의 업무용 PC를 증거 보전한 결과, 일반 인터넷이 아닌 익명 네트워크를 사용하여 외부와 접속한 정황을 포착했다.
+
+접속 기록이 회사 방화벽 로그에는 남지 않았으며, 실행된 프로그램 이름 역시 평범한 시스템 도구(메모장과 유사)로 보였다.
+하지만 분석관은 이를 ‘익명 브라우저’의 위장 가능성으로 의심했고, 실제 접속한 .onion 주소를 찾아내는 것이 사건 해결의 핵심이 되었다.
+
+flag 형식 예시: 123456789.onion => XKSW{123456789}
+
+문제 파일: https://drive.google.com/file/d/1rVwdUIYMxaZEkV1Wh22TdfyP0XHr57im/view?usp=drive_link
+```
+*Level: mid ~ high
