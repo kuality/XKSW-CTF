@@ -1,6 +1,6 @@
-* Title: Onion
-* Auhor: Whois 조하은
-* Description:
+# Title: Onion
+# Auhor: Whois 조하은
+# Description:
 ```
 국내 한 기업의 연구원이 사내 정보 유출 의심 행위를 했다는 제보가 접수되었다.
 
@@ -14,4 +14,4 @@ flag 형식 예시: 123456789.onion => XKSW{123456789}
 문제 파일: https://drive.google.com/file/d/1rVwdUIYMxaZEkV1Wh22TdfyP0XHr57im/view?usp=drive_link
 ```
 
-*Level: mid ~ high
+# Level: mid ~ high
