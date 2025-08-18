@@ -1,5 +1,8 @@
 # Echo from August
 
+## Author
+소예나
+
 ## Description
 An anonymous report claims that a suspicious executable only operates during the month of August.
 Upon analysis, it appears to contain hidden code that attempts to initiate a remote connection.
@@ -7,8 +10,7 @@ You should extract the IP address and port of the remote control server that thi
 
 Running the executable directly is dangerous. Perform static analysis only in a safe environment.
 
-## Flag Format
-XKSW{IP:Port}
+Flag Format is XKSW{IP:Port}
 
 ## Level
-easy
+low
