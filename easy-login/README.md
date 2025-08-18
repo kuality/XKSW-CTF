@@ -1,0 +1,7 @@
+﻿# easy-login
+ so easy login
+
+
+ # FLAG
+ XKSW{....}
+
