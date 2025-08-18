@@ -9,3 +9,6 @@ Running the executable directly is dangerous. Perform static analysis only in a 
 
 ## Flag Format
 XKSW{IP:Port}
+
+## Level
+easy
