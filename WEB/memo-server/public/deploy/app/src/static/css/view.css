@@ -1,0 +1,11 @@
+.card{
+	border: 2px solid black;
+	min-height: 500px;
+	color: #000;
+	position: relative;
+}
+.by{
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+}
