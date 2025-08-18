@@ -1,12 +1,12 @@
 # [Easy] easy-login
 
+## Xpert 윤나영
+
 ## Description
 A simple login form.
 
 Can you bypass the login logic and reveal the flag?
 
-## How to Run
-```bash
-docker build -t easy-login .
-docker run -d -p 8080:8080 easy-login
+## level
+low
 
