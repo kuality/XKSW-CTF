@@ -14,6 +14,7 @@ services:
       - xksw-ctf-web-memo-server-bot
 
   xksw-ctf-web-memo-server-bot:
+    container_name: xksw-ctf-web-memo-server-bot
     build: 
       context: report
       dockerfile: Dockerfile
