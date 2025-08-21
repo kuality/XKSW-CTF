@@ -1,0 +1,9 @@
+services:
+  easy-login:
+    container_name: xksw-ctf-web-easy-login
+    image: xksw-ctf/web-easy-login:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    port:
+      - 26004:8080
