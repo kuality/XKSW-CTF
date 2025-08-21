@@ -1,1 +1,1 @@
-FLAG:XKSW{welcome}
+XKSW{welcome}
