@@ -7,7 +7,7 @@ services:
       tags:
         - xksw-ctf/web-memo-server:latest
     ports:
-      - "26002:80"
+      - "26003:80"
     networks:
       - app-network
     depends_on:
