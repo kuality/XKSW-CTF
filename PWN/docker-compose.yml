@@ -3,7 +3,7 @@ services:
     container_name: xksw-ctf-pwn-note
     image: xksw-ctf/pwn-note:latest
     build:
-      context: ./Note/challenge/
+      context: ./Note/private/
       dockerfile: Dockerfile
     ports:
       - 26010:1004
@@ -11,7 +11,7 @@ services:
     container_name: xksw-ctf-pwn-not_easy_bof
     image: xksw-ctf/pwn-not_easy_bof:latest
     build:
-      context: ./not_easy_bof/challenge/
+      context: ./not_easy_bof/private/
       dockerfile: Dockerfile
     ports:
       - 26011:1004
@@ -19,7 +19,7 @@ services:
     container_name: xksw-ctf-pwn-mips_pwn
     image: xksw-ctf/pwn-mips_pwn
     build:
-      context: ./mips_pwn/challenge/
+      context: ./mips_pwn/private/
       dockerfile: Dockerfile
     ports:
       - 26012:1004
@@ -27,7 +27,7 @@ services:
     container_name: xksw-ctf-pwn-just_shellcode
     image: xksw-ctf/pwn-just_shellcode:latest
     build:
-      context: ./just_shellcode/challenge/
+      context: ./just_shellcode/private/
       dockerfile: Dockerfile
     ports:
       - 26013:1004
@@ -35,7 +35,7 @@ services:
     container_name: xksw-ctf-pwn-juicebox
     image: xksw-ctf/pwn-juicebox:latest
     build:
-      context: ./juicebox/challenge/
+      context: ./juicebox/private/
       dockerfile: Dockerfile
     ports:
       - 26014:1004
