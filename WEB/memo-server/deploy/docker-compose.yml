@@ -8,20 +8,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - "26003:80"
-    networks:
-      - app-network
     depends_on:
       - xksw-ctf-web-memo-server-bot
 
-  xksw-ctf-web-memo-server-bot:
+  memo-server-bot:
     platform: linux/amd64
     container_name: xksw-ctf-web-memo-server-bot
     image: xksw-ctf/web-html-viewer-bot:latest
     build: 
       context: report
       dockerfile: Dockerfile
-    networks:
-      - app-network
-
-networks:
-        app-network:
