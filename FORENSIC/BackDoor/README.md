@@ -1,0 +1,15 @@
+# Title: BackDoor
+# Auhor: Whois 조하은
+# Description:
+```
+회사에서 사용하는 테스트용 PC에 누군가 침입한 정황을 파악했다는 정보가 들어왔다.
+해당 테스트용 PC는 다양한 계정이 있어 어떤 계정을 통해 공격을 받았는지 확인 불분명하며
+단순 테스트 PC라는 이유로 관리가 소홀했기에 공격에 취약했다고 한다. 
+
+다행히 아직 실질적인 공격을 하기 전이라는데, 공격자의 흔적을 찾아 백도어를 조사해달라는 의뢰가 들어왔다.
+
+문제 파일: https://drive.google.com/file/d/14BF1G2wAkhXVyPNg3zj4hL7X4p5EQlx1/view?usp=drive_link
+
+```
+
+# Level: high

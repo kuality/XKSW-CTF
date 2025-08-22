@@ -1,0 +1,9 @@
+services:
+  professors-computer:
+    container_name: xksw-ctf-web-professors-computer
+    image: xksw-ctf/web-professors-computer
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 26006:80

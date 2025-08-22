@@ -1,0 +1,25 @@
+services:
+  ouroboros:
+    container_name: xksw-ctf-web-ouroboros
+    image: xksw-ctf/web-ouroboros:latest
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - "26000:80"
+    depends_on:
+      - ouroboros-mysql
+
+  ouroboros-mysql:
+    image: mysql:latest
+    container_name: ouroboros-db
+    restart: always
+    tty: true
+    volumes:
+      - ./dump/users.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: user
+      MYSQL_USER: xksw
+      MYSQL_PASSWORD: xksw
+      MYSQL_ROOT_PASSWORD: c3a9371acc72096352f8018c88d3a331

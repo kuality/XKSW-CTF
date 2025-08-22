@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Report</title>
+</head>
+<body>
+	<div>
+		<h1>Report</h1><br>
+		<b>example : index.php</b><br>
+		<b>=> http://127.0.0.1:80/index.php</b>
+		<hr>
+		<form>
+			http://127.0.0.1:80/<input type="text" name="report" placeholder="viewer.php...">
+			<input type="submit">
+		</form>
+	</div>
+	<div>
+		{% if report %}
+			{{ report }}
+		{% endif %}
+	</div>
+</body>
+</html>

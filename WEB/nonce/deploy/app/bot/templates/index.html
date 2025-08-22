@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>feedback to admin</title>
+</head>
+<body>
+	<div>
+		<h1>feedback to admin</h1>
+		<b>피드백은 언제나 환영입니다! 피드백 입력은 아래의 예시처럼 전송하시면 됩니다.</b><br>
+		<b>example : secret_key=a&secret_key=b</b><br>
+		<b>=> http://127.0.0.1:80/?secret_key=a&secret_key=b</b>
+		<hr>
+		<form>
+			<input type="text" name="feedback" placeholder="http://127.0.0.1:80/?">
+			<input type="submit">
+		</form>
+	</div>
+	<div>
+		{% if feedback %}
+			{{ feedback }}
+		{% endif %}
+	</div>
+</body>
+</html>
