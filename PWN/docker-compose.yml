@@ -30,12 +30,12 @@ services:
       context: ./just_shellcode/challenge/
       dockerfile: Dockerfile
     ports:
-      - 26012:1004
+      - 26013:1004
   pwn-juicebox:
-    container_name: xksw-ctf/pwn-juicebox:latest
+    container_name: xksw-ctf-pwn-juicebox
     image: xksw-ctf/pwn-juicebox:latest
     build:
       context: ./juicebox/challenge/
       dockerfile: Dockerfile
     ports:
-      - 26013:1004
+      - 26014:1004
