@@ -233,7 +233,14 @@ static int map_midi_to_nibble(int m) {
     return best;
 }
 
+void init() {
+	setvbuf(stdin, 0, 2, 0);
+	setvbuf(stdout, 0, 2, 0);
+	setvbuf(stderr, 0, 2, 0);
+}
+
 int main(int argc, char** argv) {
+	init();
     if (argc < 2) { fprintf(stderr, "Usage: %s input.wav\n", argv[0]); return 1; }
 
     Wav w;
