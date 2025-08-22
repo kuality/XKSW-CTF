@@ -1,1 +1,0 @@
-qemu-mips-static ./prob
