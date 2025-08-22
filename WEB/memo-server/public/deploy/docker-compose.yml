@@ -1,24 +1,23 @@
 services:
   memo-server:
     container_name: xksw-ctf-web-memo-server
+    image: xksw-ctf/web-memo-server:latest
     build:
       context: app
       dockerfile: Dockerfile
-      tags:
-        - xksw-ctf/web-memo-server:latest
     ports:
-      - "26002:80"
+      - "26003:80"
     networks:
       - app-network
     depends_on:
       - xksw-ctf-web-memo-server-bot
 
   xksw-ctf-web-memo-server-bot:
+    container_name: xksw-ctf-web-memo-server-bot
+    image: xksw-ctf/web-html-viewer-bot:latest
     build: 
       context: report
       dockerfile: Dockerfile
-      tags:
-        - xksw-ctf/web-html-viewer-bot:latest
     networks:
       - app-network
 

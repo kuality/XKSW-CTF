@@ -1,11 +1,10 @@
 services:
   ouroboros:
     container_name: xksw-ctf-web-ouroboros
+    image: xksw-ctf/web-ouroboros:latest
     build:
       context: ./
       dockerfile: ./Dockerfile
-      tags:
-        - xksw-ctf/web-ouroboros:latest
     ports:
       - "26000:80"
     depends_on:

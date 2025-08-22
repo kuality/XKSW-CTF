@@ -21,7 +21,7 @@ def BOT(xss):
         driver = webdriver.Chrome(options=ChromeOptions)
         driver.implicitly_wait(3)
         driver.set_page_load_timeout(3)
-        driver.get('http://127.0.0.1')
+        driver.get('http://xksw-ctf-web-nonce')
 
         driver.add_cookie({'name':'FLAG', 'value':FLAG.strip()})
 
@@ -33,7 +33,7 @@ def BOT(xss):
             urlen = quote(value[0])
             query += f'{key}={urlen}&'
         print(query)
-        driver.get(f'http://127.0.0.1/?{query}')
+        driver.get(f'http://xksw-ctf-web-nonce/?{query}')
 
     except:
         driver.quit()
