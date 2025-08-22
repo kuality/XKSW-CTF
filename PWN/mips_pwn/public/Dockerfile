@@ -13,4 +13,4 @@ RUN chmod -R 750 /home/pwn
 
 WORKDIR /home/pwn
 CMD socat -T 300 TCP-LISTEN:10206,reuseaddr,fork EXEC:/home/pwn/run.sh,su=pwn
-EXPOSE 10206
+EXPOSE 1004
