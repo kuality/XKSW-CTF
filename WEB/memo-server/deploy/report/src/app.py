@@ -21,11 +21,11 @@ def BOT(xss):
         driver = webdriver.Chrome(options=ChromeOptions)
         driver.implicitly_wait(3)
         driver.set_page_load_timeout(3)
-        driver.get('http://memo-server-bot')
+        driver.get('http://memo-server')
 
         driver.add_cookie({'name':'FLAG', 'value':FLAG.strip()})
 
-        driver.get(f'http://memo-server-bot/{xss}')
+        driver.get(f'http://memo-server/{xss}')
 
     except Exception as e:
         print(e)
