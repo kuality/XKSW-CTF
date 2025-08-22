@@ -9,7 +9,7 @@ services:
     ports:
       - "26003:80"
     depends_on:
-      - xksw-ctf-web-memo-server-bot
+      - memo-server-bot
 
   memo-server-bot:
     platform: linux/amd64
