@@ -12,5 +12,5 @@ RUN chown -R root:pwn /home/pwn
 RUN chmod -R 750 /home/pwn
 
 WORKDIR /home/pwn
-CMD socat -T 300 TCP-LISTEN:10206,reuseaddr,fork EXEC:/home/pwn/run.sh,su=pwn
+CMD socat -T 300 TCP-LISTEN:1004,reuseaddr,fork EXEC:/home/pwn/run.sh,su=pwn
 EXPOSE 1004
