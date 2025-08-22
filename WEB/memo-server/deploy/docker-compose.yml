@@ -1,5 +1,6 @@
 services:
   memo-server:
+    platform: linux/amd64
     container_name: xksw-ctf-web-memo-server
     image: xksw-ctf/web-memo-server:latest
     build:
@@ -13,6 +14,7 @@ services:
       - xksw-ctf-web-memo-server-bot
 
   xksw-ctf-web-memo-server-bot:
+    platform: linux/amd64
     container_name: xksw-ctf-web-memo-server-bot
     image: xksw-ctf/web-html-viewer-bot:latest
     build: 

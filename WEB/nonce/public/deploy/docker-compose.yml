@@ -1,5 +1,6 @@
 services:
   nonce:
+    platform: linux/amd64
     container_name: xksw-ctf-web-nonce
     image: xksw-ctf/web-nonce:latest
     build:
@@ -9,6 +10,7 @@ services:
       - "26001:80"
 
   nonce-bot:
+    platform: linux/amd64
     container_name: xksw-ctf-web-nonce-bot
     image: xksw-ctf/web-nonce-bot:latest
     build:

@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from urllib.parse import parse_qs, quote
+import os
 
 app = Flask(__name__)
 
@@ -9,16 +11,40 @@ try:
 except:
     FLAG = "XKSW{flag_read_error}"
 
-CONFIG = ['headless', 'window-size=1920x1080', 'disable-gpu', 'no-sandbox', 'disable-dev-shm-usage']
+CONFIG = [
+    '--headless',
+    '--window-size=1920x1080',
+    '--disable-gpu',
+    '--no-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-web-security',
+    '--disable-features=VizDisplayCompositor',
+    '--disable-extensions',
+    '--disable-plugins',
+    '--disable-images',
+    '--disable-javascript-harmony-shipping',
+    '--disable-background-timer-throttling',
+    '--disable-backgrounding-occluded-windows',
+    '--disable-renderer-backgrounding',
+    '--disable-features=TranslateUI',
+    '--disable-ipc-flooding-protection'
+]
 
 def BOT(xss):
-
-    ChromeOptions = webdriver.ChromeOptions()
-
-    for _ in CONFIG:
-        ChromeOptions.add_argument(_)
+    driver = None
     try:
-        driver = webdriver.Chrome(options=ChromeOptions)
+        ChromeOptions = webdriver.ChromeOptions()
+        
+        # ARM64 아키텍처 호환성을 위한 설정
+        ChromeOptions.binary_location = os.environ.get('CHROME_BIN', '/usr/bin/chromium')
+        
+        for arg in CONFIG:
+            ChromeOptions.add_argument(arg)
+        
+        # ChromeDriver 서비스 설정
+        service = Service(executable_path=os.environ.get('CHROMEDRIVER_PATH', '/usr/bin/chromedriver'))
+        
+        driver = webdriver.Chrome(service=service, options=ChromeOptions)
         driver.implicitly_wait(3)
         driver.set_page_load_timeout(3)
         driver.get('http://xksw-ctf-web-nonce')
@@ -35,11 +61,21 @@ def BOT(xss):
         print(query)
         driver.get(f'http://xksw-ctf-web-nonce/?{query}')
 
-    except:
-        driver.quit()
+    except Exception as e:
+        print(f"Error in BOT function: {e}")
+        if driver:
+            try:
+                driver.quit()
+            except:
+                pass
         return False
+    finally:
+        if driver:
+            try:
+                driver.quit()
+            except:
+                pass
 
-    driver.quit()
     return True
 
 @app.route('/')
