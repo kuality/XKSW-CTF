@@ -24,7 +24,7 @@ void sandbox() {
 
 int main() {
     init_buf();
-    int fd = open("./flag", O_RDONLY);
+    int fd = open("/flag", O_RDONLY);
     char *shellcode_addr = (char *)mmap(0xdead0000, 0x1000, 7, 34, -1, 0);
     read(0, shellcode_addr, 0x1000);
     sandbox();
