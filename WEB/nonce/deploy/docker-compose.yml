@@ -1,0 +1,22 @@
+services:
+  nonce:
+    platform: linux/amd64
+    container_name: xksw-ctf-web-nonce
+    image: xksw-ctf/web-nonce:latest
+    build:
+      context: ./app/php
+      dockerfile: Dockerfile
+    ports:
+      - "26001:80"
+
+  nonce-bot:
+    platform: linux/amd64
+    container_name: xksw-ctf-web-nonce-bot
+    image: xksw-ctf/web-nonce-bot:latest
+    build:
+      context: ./app/bot
+      dockerfile: Dockerfile
+    ports:
+      - "26002:8080"
+    depends_on:
+      - nonce

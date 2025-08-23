@@ -70,9 +70,7 @@ def login():
         return "Welcome guest. No flag for you."
 
     try:
-        result = eval(f"{user} == {pw}")
-        if result:
-            return f"FLAG: {FLAG}"
+        return str(eval(f"{user} == {pw}"))
     except:
         pass
 

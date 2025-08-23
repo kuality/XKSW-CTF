@@ -15,32 +15,11 @@ if (strpos($host, ';') !== false) {
     preg_match_all('/\d{4,}/', $host, $matches);
     $numbers = $matches[0];
 
-   
-    $authorized = false;
-    foreach ($numbers as $num) {
-        if ((int)$num === 1337) {
-            $authorized = true;
-            break;
-        }
-    }
-
-    if ($authorized) {
+    $output = shell_exec("ping -c 1 127.0.0.1");
         
-        $output = shell_exec("ping -c 1 127.0.0.1");
-
-        
-        $flag = file_get_contents("/flag/grades.txt");
-
-        echo "<pre>$output\n\n$flag</pre>";
-    } else {
-        header("Location: fail.php");
-        exit;
-    }
+    echo "<pre>$output</pre>";
 } else {
-    
     $output = shell_exec("ping -c 1 $host 2>&1");
     echo "<pre>$output</pre>";
 }
 ?>
-
-
