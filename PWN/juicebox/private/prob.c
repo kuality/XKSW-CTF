@@ -48,84 +48,81 @@ typedef struct {
     float*   mono;
 } Wav;
 
-static int wav_read(const uint8_t* buf, size_t total, Wav* w) {
+static int wav_read(const char* path, Wav* w) {
     memset(w, 0, sizeof(*w));
-    if (!buf || total < sizeof(RiffHeader)) return -1;
 
-    const uint8_t* p = buf;
-    const uint8_t* e = buf + total;
+    FILE* f = fopen(path, "rb");
+    if (!f) { perror("fopen"); return -1; }
 
     RiffHeader rh;
-    memcpy(&rh, p, sizeof(rh));
-    p += sizeof(rh);
-    if (memcmp(rh.riff, "RIFF", 4) || memcmp(rh.wave, "WAVE", 4)) return -1;
+    if (fread(&rh, sizeof(rh), 1, f) != 1) { fclose(f); return -1; }
+    if (memcmp(rh.riff, "RIFF", 4) || memcmp(rh.wave, "WAVE", 4)) { fclose(f); return -1; }
 
     FmtPCM fmt = (FmtPCM){0};
     int have_fmt = 0, have_data = 0;
+    long data_pos = 0;
     uint32_t data_sz = 0;
 
-    while ((size_t)(e - p) >= sizeof(ChunkHeader)) {
+    while (!feof(f)) {
         ChunkHeader ch;
-        memcpy(&ch, p, sizeof(ch));
-        p += sizeof(ch);
-
-        size_t remain = (size_t)(e - p);
-        if (remain < ch.size) return -1;              /* 선언된 크기만큼 실제 존재해야 함 */
+        if (fread(&ch, sizeof(ch), 1, f) != 1) break;
 
         if (!memcmp(ch.id, "fmt ", 4)) {
             size_t rd = ch.size < sizeof(fmt) ? ch.size : sizeof(fmt);
-            memcpy(&fmt, p, rd);
-            p += ch.size;                              /* 확장부 포함 통째로 스킵 */
+            if (fread(&fmt, 1, rd, f) != rd) { fclose(f); return -1; }
+            if (ch.size > rd) fseek(f, ch.size - rd, SEEK_CUR);
             have_fmt = 1;
-
         } else if (!memcmp(ch.id, "data", 4)) {
-            w->data = (uint8_t*)malloc(ch.size);
-            if (!w->data) return -1;
-            memcpy(w->data, p, ch.size);
-            p        += ch.size;
-            data_sz   = ch.size;
+            data_pos = ftell(f);
+            data_sz  = ch.size;
+            fseek(f, ch.size, SEEK_CUR);
             have_data = 1;
-
         } else {
-            p += ch.size;                              /* 기타 청크 스킵 */
+            fseek(f, ch.size, SEEK_CUR);
         }
 
-        /* 패딩(짝수 정렬) */
-        if (ch.size & 1) {
-            if (p >= e) return -1;
-            p++;
-        }
-
-        if (have_fmt && have_data) break;
+        if (ch.size & 1) fseek(f, 1, SEEK_CUR);
     }
 
-    if (!have_fmt || !have_data) { free(w->data); memset(w, 0, sizeof(*w)); return -1; }
-    if (fmt.audio_format != 1 || fmt.bits_per_sample != 16) { free(w->data); memset(w, 0, sizeof(*w)); return -1; }
+    if (!have_fmt || !have_data || fmt.audio_format != 1 || fmt.bits_per_sample != 16) {
+        fclose(f);
+        return -1;
+    }
 
-    w->audio_format     = fmt.audio_format;
-    w->num_channels     = fmt.num_channels;
-    w->bits_per_sample  = fmt.bits_per_sample;
-    w->sample_rate      = fmt.sample_rate;
-    w->data_bytes       = data_sz;
-    w->num_frames = (w->data_bytes / (fmt.bits_per_sample / 8)) / fmt.num_channels;
+    w->data = (uint8_t*)malloc(data_sz);
+    if (!w->data) { fclose(f); return -1; }
 
-    w->mono = (float*)malloc(sizeof(float) * (w->num_frames ? w->num_frames : 1));
-    if (!w->mono) { free(w->data); memset(w, 0, sizeof(*w)); return -1; }
+    f = fopen(path, "rb");
+    fseek(f, data_pos, SEEK_SET);
+    if (fread(w->data, 1, data_sz, f) != data_sz) { free(w->data); fclose(f); return -1; }
+    fclose(f);
 
+    w->audio_format   = fmt.audio_format;
+    w->num_channels   = fmt.num_channels;
+    w->bits_per_sample= fmt.bits_per_sample;
+    w->sample_rate    = fmt.sample_rate;
+    w->data_bytes     = data_sz;
+    w->num_frames     = (data_sz / (fmt.bits_per_sample / 8)) / fmt.num_channels;
+
+    w->mono = (float*)malloc(sizeof(float) * w->num_frames);
     const int16_t* pcm = (const int16_t*)w->data;
+
     if (fmt.num_channels == 1) {
-        for (uint32_t i = 0; i < w->num_frames; i++) w->mono[i] = (float)pcm[i] / 32768.f;
+        for (uint32_t i = 0; i < w->num_frames; i++) {
+            w->mono[i] = (float)pcm[i] / 32768.f;
+        }
     } else {
         for (uint32_t i = 0; i < w->num_frames; i++) {
             int32_t acc = 0;
-            for (int ch = 0; ch < fmt.num_channels; ch++) acc += pcm[i * fmt.num_channels + ch];
+            for (int ch = 0; ch < fmt.num_channels; ch++) {
+                acc += pcm[i * fmt.num_channels + ch];
+            }
             w->mono[i] = (float)acc / (float)fmt.num_channels / 32768.f;
         }
     }
+
     return 0;
 }
-
-
 
 static void wav_free(Wav* w) {
     free(w->data);
@@ -236,28 +233,19 @@ static int map_midi_to_nibble(int m) {
     return best;
 }
 
-void init() {
-	setvbuf(stdin, 0, 2, 0);
-	setvbuf(stdout, 0, 2, 0);
-	setvbuf(stderr, 0, 2, 0);
-}
-
 int main(int argc, char** argv) {
-    init();
+    if (argc < 2) { fprintf(stderr, "Usage: %s input.wav\n", argv[0]); return 1; }
 
     Wav w;
-    if (wav_read(&w) != 0) { fprintf(stderr, "read fail\n"); return 1; }
+    if (wav_read(argv[1], &w) != 0) { fprintf(stderr, "read fail\n"); return 1; }
 
     const int fs = (int)w.sample_rate;
     if (fs < 8000) { fprintf(stderr, "sample rate too low\n"); wav_free(&w); return 1; }
 
     const int N = FRAME_SIZE, H = HOP_SIZE;
     if ((int)w.num_frames < N) { fprintf(stderr, "audio too short\n"); wav_free(&w); return 1; }
-
     const int total = (int)((w.num_frames - N) / H + 1);
 
-
-    /* === 이하 기존 로직 그대로 === */
     float* f0s   = (float*)calloc(total, sizeof(float));
     int*   midis = (int*)  calloc(total, sizeof(int));
     float* cents = (float*)calloc(total, sizeof(float));
