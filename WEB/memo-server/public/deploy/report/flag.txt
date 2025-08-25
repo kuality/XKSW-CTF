@@ -1,1 +1,1 @@
-XKSW{THIS_IS_FAKE_FLAG}
+XKSW{this_is_fake_flag}

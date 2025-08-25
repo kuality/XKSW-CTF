@@ -14,7 +14,7 @@ services:
   memo-server-bot:
     platform: linux/amd64
     container_name: xksw-ctf-web-memo-server-bot
-    image: xksw-ctf/web-html-viewer-bot:latest
+    image: xksw-ctf/web-memo-server-bot:latest
     build: 
       context: report
       dockerfile: Dockerfile
