@@ -27,23 +27,23 @@
 
 | Name | Challenge Name | Category | POC Test | Cross Check | 검수자 | 
 | :-: | :-: | :-: | :-: | :-: | :-: |
-| 김민욱 | ouroboros | WEB | ❌ | ❌ | - | 
-| 김민욱 | memo-server | WEB | ❌ | ❌ | - |
-| 김민욱 | nonce | WEB | ❌ | ❌ | - |
-| 나영 | easy-login | WEB | ❌ | ❌ | - |
-| 나영 | professor's computer | WEB | ❌ | ❌ | - | 
-| 황동현 | Quantum_Enigma | REV | ❌ | ❌ | - |
-| 황동현 | Opcode_Odyssey | REV | ❌ | ❌ | - |
-| 소예나 | EchoFromAugust | REV | ❌ | ❌ | - |
-| 소예나 | ver | REV | ❌ | ❌ | - |
-| 소예나 | Real Love | FORENSIC | ❌ | ❌ | - |
-| 김주현 | Sorting_list_ugin_hmm | FORENSIC | ❌ | ❌ | - |
-| 김주현 | What_does_my_pattern_mean | FORENSIC | ❌ | ❌ | - |
-| 서호진 | mips_pwn | PWN | ❌ | ❌ | - |
-| 서호진 | Note | PWN | ❌ | ❌ | - |
-| 박현 | not_easy_bof | PWN | ❌ | ❌ | - |
-| 박현 | juicebox | PWN | ❌ | ❌ | - |
-| 박현 | just_shellcode | PWN | ❌ | ❌ | - |
+| 김민욱 | ouroboros | WEB | ✅ | ✅ | - | 
+| 김민욱 | memo-server | WEB | ✅ | ✅ | - |
+| 김민욱 | nonce | WEB | ✅ | ✅ | - |
+| 나영 | easy-login | WEB | ✅ | ✅ | - |
+| 나영 | professor's computer | WEB | ✅ | ✅ | - | 
+| 황동현 | Quantum_Enigma | REV | ✅ | ✅ | - |
+| 황동현 | Opcode_Odyssey | REV | ✅ | ✅ | - |
+| 소예나 | EchoFromAugust | REV | ✅ | ✅ | - |
+| 소예나 | ver | REV | ✅ | ✅ | - |
+| 소예나 | Real Love | FORENSIC | ✅ | ✅ | - |
+| 김주현 | Sorting_list_ugin_hmm | FORENSIC | ✅ | ✅ | - |
+| 김주현 | What_does_my_pattern_mean | FORENSIC | ✅ | ✅ | - |
+| 서호진 | mips_pwn | PWN | ✅ | ✅ | - |
+| 서호진 | Note | PWN | ✅ | ✅ | - |
+| 박현 | not_easy_bof | PWN | ✅ | ✅ | - |
+| 박현 | juicebox | PWN | ✅ | ✅ | - |
+| 박현 | just_shellcode | PWN | ✅ | ✅ | - |
 
 ```
 ├── FORENSIC
