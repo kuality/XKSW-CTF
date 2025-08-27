@@ -22,6 +22,7 @@
 | SWUFORCE | 김주현 | FORENSIC | 문제 출제자 & 문제 검수자 |
 | Whois | 서호진(seohojinn) | PWN | 문제 출제자 & 문제 검수자 |
 | Whois | 조하은 | FORENSIC | 문제 출제자 & 문제 검수자 |
+| @Xpert | 윤나영 | WEB | 문제 출제자 & 문제 검수자 |
 
 
 ## Challenge List
@@ -31,8 +32,8 @@
 | 김민욱 | ouroboros | WEB | ✅ | ✅ | - | 
 | 김민욱 | memo-server | WEB | ✅ | ✅ | - |
 | 김민욱 | nonce | WEB | ✅ | ✅ | - |
-| 나영 | easy-login | WEB | ✅ | ✅ | - |
-| 나영 | professor's computer | WEB | ✅ | ✅ | - | 
+| 윤나영 | easy-login | WEB | ✅ | ✅ | - |
+| 윤나영 | professor's computer | WEB | ✅ | ✅ | - | 
 | 황동현 | Quantum_Enigma | REV | ✅ | ✅ | - |
 | 황동현 | Opcode_Odyssey | REV | ✅ | ✅ | - |
 | 소예나 | EchoFromAugust | REV | ✅ | ✅ | - |
