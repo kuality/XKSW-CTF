@@ -39,6 +39,8 @@
 | 소예나 | Real Love | FORENSIC | ✅ | ✅ | - |
 | 김주현 | Sorting_list_ugin_hmm | FORENSIC | ✅ | ✅ | - |
 | 김주현 | What_does_my_pattern_mean | FORENSIC | ✅ | ✅ | - |
+| 조하은 | Onion | FORENSIC | ✅ | ✅ | - |
+| 조하은 | Backdoor | FORENSIC | ✅ | ✅ | - |
 | 서호진 | mips_pwn | PWN | ✅ | ✅ | - |
 | 서호진 | Note | PWN | ✅ | ✅ | - |
 | 박현 | not_easy_bof | PWN | ✅ | ✅ | - |
